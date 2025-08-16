@@ -10,10 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <!-- Header / Nav -->
   <header class="site-header" id="header">
     <a class="logo" href="#home">CK</a>
-    <nav id="nav" class="nav">
+
+    <!-- Overlay menu (hidden until ☰ is pressed) -->
+    <nav id="nav" class="nav" aria-label="Primary">
       <a href="#about" data-nav>About</a>
       <a href="#skills" data-nav>Skills</a>
       <a href="#education" data-nav>Education</a>
@@ -22,18 +25,15 @@
       <a href="#extras" data-nav>Publications & Certifications</a>
       <a href="#contact" data-nav>Contact</a>
     </nav>
+
     <div class="header-actions">
       <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">🌓</button>
-      <button id="menuToggle" class="icon-btn menu" aria-label="Toggle menu">☰</button>
+      <button id="menuToggle" class="icon-btn menu" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero (full-background) -->
   <section id="home" class="hero section">
-    <div class="hero-art">
-      <!-- #5 image on top above greeting -->
-      <img src="assets/hero-stars.jpg" alt="Discipline stars" />
-    </div>
     <div class="hero-inner container">
       <p class="eyebrow">Hello, I’m</p>
       <h1>Chetana Kulkarni</h1>
@@ -73,10 +73,12 @@
       </div>
 
       <div class="about-card">
+        <!-- Circular portrait outside the card -->
         <div class="about-portrait">
-          <!-- #3 image in a circular frame -->
-          <img src="assets/about-portrait.png" alt="Chetana illustration" />
+          <!-- Use your 3rd Pinterest image -->
+          <img src="assets/about-portrait.png" alt="Chetana illustration">
         </div>
+
         <div class="about-info">
           <h3>Personal Info</h3>
           <ul>
@@ -93,10 +95,11 @@
 
   <!-- Skills -->
   <section id="skills" class="section skills-section">
-    <div class="skills-frame">
-      <!-- #1 dotted frame as decorative bg -->
-      <img src="assets/skills-frame.jpg" alt="" aria-hidden="true">
+    <!-- Decorative dotted frame -->
+    <div class="skills-frame" aria-hidden="true">
+      <img src="assets/skills-frame.png" alt="">
     </div>
+
     <div class="container">
       <h2>Technical Skills</h2>
       <div class="skills-grid">
@@ -116,37 +119,41 @@
   <section id="education" class="section bg-alt">
     <div class="container">
       <h2>Education</h2>
-      <div class="timeline">
-        <div class="titem">
-          <div class="tdate">2022 — Present</div>
-          <div class="tcontent">
-            <h4>K J Somaiya School of Engineering, Mumbai</h4>
-            <p>B.Tech in Information Technology (Honors in Cybersecurity)</p>
-            <p><strong>CGPA:</strong> 8.48</p>
+
+      <div class="edu-grid">
+        <div>
+          <div class="timeline">
+            <div class="titem">
+              <div class="tdate">2022 — Present</div>
+              <div class="tcontent">
+                <h4>K J Somaiya School of Engineering, Mumbai</h4>
+                <p>B.Tech in Information Technology (Honors in Cybersecurity)</p>
+                <p><strong>CGPA:</strong> 8.48</p>
+              </div>
+            </div>
+            <div class="titem">
+              <div class="tdate">2020 — 2022</div>
+              <div class="tcontent">
+                <h4>Pace Junior Science College</h4>
+                <p>12th — <strong>76.33%</strong></p>
+              </div>
+            </div>
+            <div class="titem">
+              <div class="tdate">2020</div>
+              <div class="tcontent">
+                <h4>R N Podar School</h4>
+                <p>10th — <strong>95.16%</strong></p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="titem">
-          <div class="tdate">2020 — 2022</div>
-          <div class="tcontent">
-            <h4>Pace Junior Science College</h4>
-            <p>12th — <strong>76.33%</strong></p>
-          </div>
-        </div>
-        <div class="titem">
-          <div class="tdate">2020</div>
-          <div class="tcontent">
-            <h4>R N Podar School</h4>
-            <p>10th — <strong>95.16%</strong></p>
-          </div>
-        </div>
+
+        <!-- Right-side square image -->
+        <figure class="edu-art">
+          <img src="assets/education-square.jpg" alt="Study & learning setup" loading="lazy" />
+        </figure>
       </div>
     </div>
-          <figure class="edu-art">
-        <!-- Replace with your actual file/extension -->
-        <img src="assets/education-square.jpg" alt="Study & learning setup" loading="lazy" />
-      </figure>
-    </div>
-  </div>
   </section>
 
   <!-- Experience -->
@@ -199,14 +206,10 @@
     </div>
   </section>
 
-  <!-- Projects -->
+  <!-- Projects (section backdrop via CSS) -->
   <section id="projects" class="section bg-alt">
     <div class="container">
-      <div class="section-head with-art">
-        <h2>Projects</h2>
-        <!-- #2 desk image as banner art -->
-        <img class="section-art" src="assets/projects-desk.jpg" alt="Desk setup">
-      </div>
+      <h2>Projects</h2>
 
       <div class="project-grid">
         <article class="project card">
@@ -242,7 +245,7 @@
     </div>
   </section>
 
-  <!-- Publications & Certifications + Interests + Key Achievements -->
+  <!-- Publications, Interests & Key Achievements (section backdrop via CSS) -->
   <section id="extras" class="section">
     <div class="container">
       <h2>Publications & Others</h2>
@@ -270,9 +273,7 @@
         <li><strong>KJSSE Insignia — ART Team:</strong> Led creative installations for fests; promoted collaboration and event aesthetics.</li>
       </ul>
 
-      <h3 class="mt with-art">Key Achievements</h3>
-      <!-- #4 planners image on the side -->
-      <img class="section-art right" src="assets/achievements-planners.jpg" alt="Planners">
+      <h3 class="mt">Key Achievements</h3>
       <ul>
         <li>Awarded for building an incident reporting app for our college in Google AppSheet no-code hackathon.</li>
         <li>Achieved a global rank of 15,711 on the Unstop platform, demonstrating active participation and competitive performance.</li>
