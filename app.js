@@ -12,21 +12,33 @@ if (themeBtn) {
   });
 }
 
-// ===== Mobile menu =====
+// ===== Menu: overlay for all sizes =====
 const menuToggle = document.getElementById("menuToggle");
 const nav = document.getElementById("nav");
+
+function openMenu() {
+  nav.classList.add("open");
+  document.body.classList.add("no-scroll");
+  menuToggle.setAttribute("aria-expanded", "true");
+}
+function closeMenu() {
+  nav.classList.remove("open");
+  document.body.classList.remove("no-scroll");
+  menuToggle.setAttribute("aria-expanded", "false");
+}
 if (menuToggle && nav) {
-  menuToggle.addEventListener("click", () => nav.classList.toggle("open"));
-  nav.querySelectorAll("a").forEach(a =>
-    a.addEventListener("click", () => nav.classList.remove("open"))
-  );
+  menuToggle.addEventListener("click", () => {
+    nav.classList.contains("open") ? closeMenu() : openMenu();
+  });
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
 }
 
 // ===== Year in footer =====
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ===== Smooth scroll + active link highlight (scrollspy) =====
+// ===== Smooth scroll active link highlight =====
 const sections = [...document.querySelectorAll("section[id]")];
 const navLinks = [...document.querySelectorAll(".nav a")];
 const linkById = {};
@@ -34,29 +46,25 @@ navLinks.forEach(link => {
   const id = link.getAttribute("href")?.replace("#", "");
   if (id) linkById[id] = link;
 });
-
-// Use IntersectionObserver to set .active on the correct nav link
-const spy = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      const id = entry.target.id;
-      const link = linkById[id];
-      if (!link) return;
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-      }
-    });
-  },
-  { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 }
-);
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.id;
+    const link = linkById[id];
+    if (!link) return;
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+    }
+  });
+}, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
 sections.forEach(s => spy.observe(s));
 
-// ===== Reveal-on-scroll =====
+// ===== Scroll reveal =====
 const revealEls = [];
-document.querySelectorAll(".section, .card, .project, .titem, .about-card, .highlights li")
-  .forEach(el => { el.classList.add("reveal"); revealEls.push(el); });
-
+document.querySelectorAll(".section, .card, .project, .titem, .about-card, .highlights li").forEach(el => {
+  el.classList.add("reveal");
+  revealEls.push(el);
+});
 const revObs = new IntersectionObserver((entries, obs) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -65,7 +73,6 @@ const revObs = new IntersectionObserver((entries, obs) => {
     }
   });
 }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-
 revealEls.forEach(el => revObs.observe(el));
 
 // ===== Contact form (mailto demo) =====
