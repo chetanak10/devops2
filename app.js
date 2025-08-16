@@ -26,37 +26,36 @@ if (menuToggle && nav) {
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ===== Smooth scroll active link highlight =====
+// ===== Smooth scroll + active link highlight (scrollspy) =====
 const sections = [...document.querySelectorAll("section[id]")];
 const navLinks = [...document.querySelectorAll(".nav a")];
-const sectionById = Object.fromEntries(sections.map(s => [s.id, s]));
 const linkById = {};
 navLinks.forEach(link => {
   const id = link.getAttribute("href")?.replace("#", "");
   if (id) linkById[id] = link;
 });
 
-const spy = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const id = entry.target.id;
-    if (!id) return;
-    const link = linkById[id];
-    if (!link) return;
-    if (entry.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove("active"));
-      link.classList.add("active");
-    }
-  });
-}, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
-
+// Use IntersectionObserver to set .active on the correct nav link
+const spy = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      const link = linkById[id];
+      if (!link) return;
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+      }
+    });
+  },
+  { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 }
+);
 sections.forEach(s => spy.observe(s));
 
-// ===== Scroll reveal =====
+// ===== Reveal-on-scroll =====
 const revealEls = [];
-document.querySelectorAll(".section, .card, .project, .titem, .about-card, .highlights li").forEach(el => {
-  el.classList.add("reveal");
-  revealEls.push(el);
-});
+document.querySelectorAll(".section, .card, .project, .titem, .about-card, .highlights li")
+  .forEach(el => { el.classList.add("reveal"); revealEls.push(el); });
 
 const revObs = new IntersectionObserver((entries, obs) => {
   entries.forEach(e => {
@@ -69,7 +68,7 @@ const revObs = new IntersectionObserver((entries, obs) => {
 
 revealEls.forEach(el => revObs.observe(el));
 
-// ===== Contact form (mailto demo; replace with backend later) =====
+// ===== Contact form (mailto demo) =====
 function contactSubmit(e){
   e.preventDefault();
   const form = e.target;
