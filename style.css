@@ -156,7 +156,10 @@ body.no-scroll{overflow:hidden}
 
 /* ======= Skills ======= */
 .skills-section{position:relative; overflow:hidden}
-.skills-frame{position:absolute; inset:auto -80px -60px -80px; pointer-events:none; opacity:.18; display:flex; justify-content:center; transform:rotate(.5deg); z-index:-1}
+.skills-frame{
+  position:absolute; inset:auto -80px -60px -80px; pointer-events:none; opacity:.18;
+  display:flex; justify-content:center; transform:rotate(0.5deg);
+}
 .skills-frame img{max-width:1000px; width:100%}
 .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:18px}
 .card{
@@ -171,6 +174,7 @@ body.no-scroll{overflow:hidden}
   box-shadow:0 12px 30px rgba(34,211,238,.12);
 }
 .card h4{margin:0 0 8px}
+
 
 /* ======= Projects ======= */
 #projects{position:relative; overflow:hidden}
