@@ -155,12 +155,6 @@ body.no-scroll{overflow:hidden}
 @media (max-width:1024px){ .about-info{padding-right:0} .about-portrait{left:12px; right:auto; width:132px; height:132px} }
 
 /* ======= Skills ======= */
-.skills-section{position:relative; overflow:hidden}
-.skills-frame{
-  position:absolute; inset:auto -80px -60px -80px; pointer-events:none; opacity:.18;
-  display:flex; justify-content:center; transform:rotate(0.5deg);
-}
-.skills-frame img{max-width:1000px; width:100%}
 .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:18px}
 .card{
   border:1px solid var(--border); background:var(--card);
@@ -175,6 +169,13 @@ body.no-scroll{overflow:hidden}
 }
 .card h4{margin:0 0 8px}
 
+/* — New: Decorative dotted frame image behind skills */
+.skills-section{position:relative; overflow:hidden}
+.skills-frame{
+  position:absolute; inset:auto -80px -60px -80px; pointer-events:none; opacity:.18;
+  display:flex; justify-content:center; transform:rotate(.5deg);
+}
+.skills-frame img{max-width:1000px; width:100%}
 
 /* ======= Projects ======= */
 #projects{position:relative; overflow:hidden}
