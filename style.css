@@ -85,10 +85,7 @@ a{color:inherit}
   border:1px solid var(--border); background:var(--card); color:var(--text);
   padding:9px 12px; border-radius:12px; cursor:pointer; box-shadow:var(--shadow);
 }
-/* Always show the hamburger */
 .icon-btn.menu{display:inline-block}
-
-/* When menu is open, prevent background scroll */
 body.no-scroll{overflow:hidden}
 
 /* ======= Hero (full-bleed background) ======= */
@@ -154,7 +151,37 @@ body.no-scroll{overflow:hidden}
 @media (max-width:1200px){ .about-info{padding-right:160px} .about-portrait{right:-20px; top:-24px; width:150px; height:150px} }
 @media (max-width:1024px){ .about-info{padding-right:0} .about-portrait{left:12px; right:auto; width:132px; height:132px} }
 
-/* ======= Skills ======= */
+/* ======= Backdrop helper for sections ======= */
+.has-backdrop{position:relative; overflow:hidden}
+.has-backdrop::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  opacity:.58; /* unified softness; each section may override */
+  background-size:cover; background-position:center; background-repeat:no-repeat;
+}
+/* Skills backdrop (your 1st Pinterest image) */
+.skills-backdrop::after{
+  /* lighter veil for readability; swap opacity if needed */
+  background-image:
+    linear-gradient(180deg, rgba(10,11,16,.80), rgba(10,11,16,.80)),
+    url("assets/skills-frame.png");
+  opacity:.62;
+}
+/* Projects backdrop (your 2nd Pinterest image) */
+.projects-backdrop::after{
+  background-image:
+    linear-gradient(180deg, rgba(10,11,16,.82), rgba(10,11,16,.82)),
+    url("assets/projects-desk.jpg");
+  opacity:.60;
+}
+/* Achievements backdrop (your 4th Pinterest image) */
+.achievements-backdrop::after{
+  background-image:
+    linear-gradient(180deg, rgba(10,11,16,.86), rgba(10,11,16,.86)),
+    url("assets/achievements-planners.jpg");
+  opacity:.55;
+}
+
+/* ======= Skills grid/cards ======= */
 .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:18px}
 .card{
   border:1px solid var(--border); background:var(--card);
@@ -169,14 +196,6 @@ body.no-scroll{overflow:hidden}
 }
 .card h4{margin:0 0 8px}
 
-/* — New: Decorative dotted frame image behind skills */
-.skills-section{position:relative; overflow:hidden}
-.skills-frame{
-  position:absolute; inset:auto -80px -60px -80px; pointer-events:none; opacity:.18;
-  display:flex; justify-content:center; transform:rotate(.5deg);
-}
-.skills-frame img{max-width:1000px; width:100%}
-
 /* ======= Projects ======= */
 .project-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:18px}
 .project .project-meta{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:6px}
@@ -185,19 +204,11 @@ body.no-scroll{overflow:hidden}
   background:linear-gradient(90deg, color-mix(in srgb, var(--brand-1) 25%, transparent), color-mix(in srgb, var(--brand-2) 15%, transparent));
 }
 
-/* — New: section header art (projects banner) */
-.section-head{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:10px}
-.section-head.with-art .section-art{
-  width:220px; max-width:30%; border-radius:14px; border:1px solid var(--border)
-}
-
 /* ======= Education ======= */
 .timeline{display:grid; gap:18px; margin-top:8px}
 .titem{display:grid; grid-template-columns:150px 1fr; gap:16px; align-items:start}
 .tdate{color:var(--muted); font-weight:700; letter-spacing:.03em}
 .tcontent h4{margin:0 0 6px}
-
-/* Right-side square image */
 .edu-grid{
   --eduSize: clamp(260px, 32vw, 420px);
   display:grid; grid-template-columns:1fr var(--eduSize); gap:24px; align-items:start;
@@ -208,16 +219,6 @@ body.no-scroll{overflow:hidden}
   border:1px solid var(--border); background:var(--card); border-radius:20px; overflow:hidden; box-shadow:var(--shadow);
 }
 .edu-art img{width:100%; height:100%; object-fit:cover; display:block}
-
-/* ======= Extras (Publications & Key Achievements) ======= */
-#extras{position:relative; overflow:hidden}
-#extras::before{
-  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background:
-    linear-gradient(180deg, rgba(10,11,16,.86), rgba(10,11,16,.86)),
-    url("assets/achievements-planners.jpg") center/cover no-repeat;
-  opacity:.55;
-}
 
 /* ======= Contact & Footer ======= */
 .contact-form{margin-top:16px; display:grid; gap:12px}
@@ -243,12 +244,12 @@ input:focus,textarea:focus{
 .reveal{opacity:0; transform:translateY(22px) scale(.98); filter:blur(3px)}
 .reveal.in{opacity:1; transform:none; filter:none; transition:opacity .7s ease, transform .7s ease, filter .7s ease}
 
-/* Ambient blobs (keep) */
+/* Ambient blobs — render behind everything else */
 .section::before{
   content:""; position:absolute; inset:auto auto -120px -120px; width:280px; height:280px;
   background:radial-gradient(circle at 30% 30%, rgba(167,139,250,.20), transparent 60%),
              radial-gradient(circle at 70% 70%, rgba(34,211,238,.18), transparent 60%);
-  filter:blur(30px); z-index:-1; pointer-events:none; transform:rotate(8deg);
+  filter:blur(30px); z-index:-2; pointer-events:none; transform:rotate(8deg);
 }
 .section:nth-of-type(odd)::before{inset:auto -120px -130px auto; transform:rotate(-8deg)}
 
