@@ -65,17 +65,16 @@
           I enjoy collaborating with cross-functional teams, shipping features, and improving usability and performance.
         </p>
         <div class="links">
-          <a class="chip" href="mailto:chetanak1005@gmail.com">Mail📧 ↗</a>
-          <a class="chip" href="https://www.linkedin.com/in/chetana-kulkarni-23a2542b3/" target="_blank" rel="noopener">LinkedInℹ️↗</a>
-          <a class="chip" href="tel:+919322280063">Phone📞</a>
-          <a class="chip" href="#contact">Location🏙️: Mumbai</a>
+          <a class="chip" href="mailto:chetanak1005@gmail.com">chetanak1005@gmail.com ↗</a>
+          <a class="chip" href="https://www.linkedin.com/in/chetana-kulkarni-23a2542b3/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="chip" href="tel:+919322280063">+91 93222 80063</a>
+          <a class="chip" href="#contact">Location: Mumbai</a>
         </div>
       </div>
 
       <div class="about-card">
         <!-- Circular portrait outside the card -->
         <div class="about-portrait">
-          <!-- Use your 3rd Pinterest image -->
           <img src="assets/about-portrait.png" alt="Chetana illustration">
         </div>
 
@@ -83,6 +82,7 @@
           <h3>Personal Info</h3>
           <ul>
             <li><strong>Date of Birth:</strong> 10/05/2004</li>
+            <li><strong>Languages:</strong> English, Hindi, Kannada, Marathi</li>
             <li><strong>Hobbies:</strong> Sketching, Singing, Dancing, Editing</li>
             <li><strong>Additional Skills:</strong> UI/UX Collaboration, IoT, Cybersecurity, AI/ML, LLM</li>
             <li><strong>Core Competencies:</strong> Problem Solving, Analytical Thinking, Collaboration, Adaptability</li>
@@ -92,19 +92,11 @@
     </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="section skills-section">
-    <!-- Decorative dotted frame -->
-    <div class="skills-frame" aria-hidden="true">
-      <img src="assets/skills-frame.png" alt="">
-    </div>
-
+  <!-- Skills (section backdrop applied via CSS) -->
+  <section id="skills" class="section has-backdrop skills-backdrop">
     <div class="container">
       <h2>Technical Skills</h2>
-        <div class="skills-frame">
-        <img src="assets/skills-frame.png" alt="" aria-hidden="true">
-    </div>
-       <div class="skills-grid">
+      <div class="skills-grid">
         <div class="card"><h4>Languages</h4><p>Python, C, JavaScript, PHP, XML, JSON</p></div>
         <div class="card"><h4>Web / Dev</h4><p>HTML, CSS, React.js, Web APIs</p></div>
         <div class="card"><h4>Databases</h4><p>PostgreSQL, MySQL, MongoDB, Firebase</p></div>
@@ -209,11 +201,9 @@
   </section>
 
   <!-- Projects (section backdrop via CSS) -->
-  <section id="projects" class="section bg-alt">
+  <section id="projects" class="section bg-alt has-backdrop projects-backdrop">
     <div class="container">
       <h2>Projects</h2>
-      <img class="section-art" src="assets/projects-desk.png" alt="Desk setup">
-    </div>
 
       <div class="project-grid">
         <article class="project card">
@@ -250,7 +240,7 @@
   </section>
 
   <!-- Publications, Interests & Key Achievements (section backdrop via CSS) -->
-  <section id="extras" class="section">
+  <section id="extras" class="section has-backdrop achievements-backdrop">
     <div class="container">
       <h2>Publications & Others</h2>
       <ul>
@@ -278,7 +268,6 @@
       </ul>
 
       <h3 class="mt">Key Achievements</h3>
-      <img class="section-art right" src="assets/achievements-planners.png" alt="Planners">
       <ul>
         <li>Awarded for building an incident reporting app for our college in Google AppSheet no-code hackathon.</li>
         <li>Achieved a global rank of 15,711 on the Unstop platform, demonstrating active participation and competitive performance.</li>
@@ -313,7 +302,10 @@
   <footer class="site-footer">
     <div class="container fwrap">
       <small>© <span id="year"></span> Chetana Kulkarni. All rights reserved.</small>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/chetana-kulkarni-23a2542b3/" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
         <a href="#home" class="backtotop">Back to top ↑</a>
+      </div>
     </div>
   </footer>
 
