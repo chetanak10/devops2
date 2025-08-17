@@ -178,19 +178,17 @@ body.no-scroll{overflow:hidden}
 .skills-frame img{max-width:1000px; width:100%}
 
 /* ======= Projects ======= */
-#projects{position:relative; overflow:hidden}
-#projects::before{
-  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background:
-    linear-gradient(180deg, rgba(10,11,16,.82), rgba(10,11,16,.82)),
-    url("assets/projects-desk.jpg") center/cover no-repeat;
-  opacity:.6;
-}
 .project-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:18px}
 .project .project-meta{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:6px}
 .pill{
   padding:4px 10px; border-radius:999px; border:1px solid var(--border); font-size:12px;
   background:linear-gradient(90deg, color-mix(in srgb, var(--brand-1) 25%, transparent), color-mix(in srgb, var(--brand-2) 15%, transparent));
+}
+
+/* — New: section header art (projects banner) */
+.section-head{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:10px}
+.section-head.with-art .section-art{
+  width:220px; max-width:30%; border-radius:14px; border:1px solid var(--border)
 }
 
 /* ======= Education ======= */
