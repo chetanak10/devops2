@@ -12,13 +12,13 @@
   --shadow:0 10px 30px rgba(0,0,0,.45);
   --glow:0 0 40px rgba(108,186,255,.35);
 }
-:root.light{
+:root.light {
   --bg:#f7f8fc;
   --bg-alt:#ffffff;
-  --text:#121316;
-  --muted:#5a6072;
-  --card:rgba(255,255,255,.75);
-  --border:rgba(0,0,0,.08);
+  --text:#000000;   /* strong black */
+  --muted:#222222;  /* darker muted text for better visibility */
+  --card:rgba(255,255,255,.85);
+  --border:rgba(0,0,0,.1);
   --shadow:0 12px 32px rgba(12,18,28,.12);
   --glow:0 0 32px rgba(59,130,246,.25);
 }
