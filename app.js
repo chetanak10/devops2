@@ -12,60 +12,32 @@ if (themeBtn) {
   });
 }
 
-// ===== Mobile menu (overlay under 820px) =====
+// ===== Mobile overlay menu (<= 820px) =====
 const menuToggle = document.getElementById("menuToggle");
 const nav = document.getElementById("nav");
-
-function trapFocusIn(el, e) {
-  const focusables = el.querySelectorAll(
-    'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
-  );
-  if (!focusables.length) return;
-  const first = focusables[0];
-  const last = focusables[focusables.length - 1];
-  if (e.key === "Tab" && !e.shiftKey && document.activeElement === last) {
-    e.preventDefault(); first.focus();
-  } else if (e.key === "Tab" && e.shiftKey && document.activeElement === first) {
-    e.preventDefault(); last.focus();
-  }
-}
 
 function openMenu() {
   nav.classList.add("open");
   document.body.classList.add("no-scroll");
   menuToggle.setAttribute("aria-expanded", "true");
   menuToggle.setAttribute("aria-label", "Close menu");
-  // focus first link
-  const firstLink = nav.querySelector("a");
-  if (firstLink) firstLink.focus();
 }
-
 function closeMenu() {
   nav.classList.remove("open");
   document.body.classList.remove("no-scroll");
   menuToggle.setAttribute("aria-expanded", "false");
   menuToggle.setAttribute("aria-label", "Open menu");
-  menuToggle.focus();
 }
 
 if (menuToggle && nav) {
   menuToggle.addEventListener("click", () => {
     nav.classList.contains("open") ? closeMenu() : openMenu();
   });
-
-  // Close when clicking a link
+  // Close when a link is clicked
   nav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
-
-  // Click outside (overlay background)
-  nav.addEventListener("click", (e) => { if (e.target === nav) closeMenu(); });
-
-  // Escape key + focus trap
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && nav.classList.contains("open")) closeMenu();
-    if (nav.classList.contains("open")) trapFocusIn(nav, e);
-  });
-
-  // If resized to desktop while menu open, reset state
+  // Escape to close
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
+  // If resized to desktop while open, reset
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 820 && nav.classList.contains("open")) closeMenu();
   });
@@ -75,13 +47,13 @@ if (menuToggle && nav) {
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ===== Smooth scroll with sticky-header offset =====
+// ===== Smooth scroll with sticky header offset =====
 const header = document.getElementById("header");
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function scrollWithOffset(targetEl) {
   if (!targetEl) return;
-  const offset = (header?.offsetHeight || 0) + 12; // 12px breathing room
+  const offset = (header?.offsetHeight || 0) + 12;
   const y = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
   window.scrollTo({ top: Math.max(0, y), behavior: prefersReduced ? "auto" : "smooth" });
 }
@@ -121,16 +93,15 @@ if ("IntersectionObserver" in window) {
       }
     });
   }, {
-    // bias towards the section that's most visible, account for sticky header
     rootMargin: `-${(header?.offsetHeight || 0) + 40}px 0px -55% 0px`,
     threshold: 0.1
   });
   sections.forEach(s => spy.observe(s));
 }
 
-// ===== Scroll reveal (respect reduced motion) =====
-const revealTargets = document.querySelectorAll(".section, .card, .project, .titem, .about-card, .highlights li");
-if (prefersReduced) {
+// ===== Scroll reveal =====
+const revealTargets = document.querySelectorAll(".section, .card, .project, .titem, .about-card, .badges li");
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   revealTargets.forEach(el => el.classList.add("in"));
 } else if ("IntersectionObserver" in window) {
   const revObs = new IntersectionObserver((entries, obs) => {
@@ -146,7 +117,6 @@ if (prefersReduced) {
     revObs.observe(el);
   });
 } else {
-  // Fallback: no IO support
   revealTargets.forEach(el => el.classList.add("in"));
 }
 
@@ -167,3 +137,4 @@ function contactSubmit(e){
   return false;
 }
 window.contactSubmit = contactSubmit;
+
