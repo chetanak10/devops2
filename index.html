@@ -10,12 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  
+
   <!-- Header / Nav -->
   <header class="site-header" id="header">
     <a class="logo" href="#home">CK</a>
 
-    <!-- Overlay menu (hidden until ☰ is pressed) -->
+    <!-- Desktop nav (inline); becomes overlay on mobile via CSS/JS -->
     <nav id="nav" class="nav" aria-label="Primary">
       <a href="#about" data-nav>About</a>
       <a href="#skills" data-nav>Skills</a>
@@ -32,26 +32,56 @@
     </div>
   </header>
 
-  <!-- Hero (full-background) -->
+  <!-- Hero (full-bleed background + framed art) -->
   <section id="home" class="hero section">
-    <div class="hero-inner container">
-      <p class="eyebrow">Hello, I’m</p>
-      <h1>Chetana Kulkarni</h1>
-      <p class="subtitle">
-        Final-year B.Tech IT student passionate about turning data into insights, building cloud-powered solutions,
-        and creating sleek, responsive web apps. Experienced across research, internships, and agile teams—actively
-        seeking full-time opportunities.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="#projects">View Projects</a>
-        <a class="btn ghost" href="#contact">Contact Me</a>
+    <div class="glows" aria-hidden="true"></div>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Hello, I’m</p>
+        <h1>Chetana Kulkarni</h1>
+        <p class="subtitle">
+          Final-year B.Tech IT student passionate about turning data into insights, building cloud-powered solutions,
+          and creating sleek, responsive web apps. Experienced across research, internships, and agile teams—actively
+          seeking full-time opportunities.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn ghost" href="#contact">Contact Me</a>
+        </div>
+        <ul class="badges">
+          <li>👩🏻‍💻 Software Engineer</li>
+          <li>☁️ Cloud & DevOps</li>
+          <li>🤖 Data Analytics/ Engineer</li>
+          <li>🔐 Cybersecurity (Honors)</li>
+        </ul>
       </div>
-      <ul class="highlights">
-        <li>👩🏻‍💻 Software Engineer</li>
-        <li>☁️ Cloud & DevOps</li>
-        <li>🤖 Data Analytics/ Engineer</li>
-        <li>🔐 Cybersecurity (Honors)</li>
-      </ul>
+
+      <!-- Soft framed hero image for vibes -->
+      <div class="hero-art">
+        <figure class="hero-card">
+          <img src="assets/hero-stars.jpg" alt="Hero art" />
+        </figure>
+      </div>
+    </div>
+
+    <!-- Optional feature strip (3 mini glass cards) -->
+    <div class="container feature-strip">
+      <article class="feature glass">
+        <span class="fi">⚡</span>
+        <h4>Performance-first</h4>
+        <p>Clean, reliable code & optimized UX.</p>
+      </article>
+      <article class="feature glass">
+        <span class="fi">🔗</span>
+        <h4>APIs & Cloud</h4>
+        <p>Integrations, AWS, CI/CD, observability.</p>
+      </article>
+      <article class="feature glass">
+        <span class="fi">📊</span>
+        <h4>Data-driven</h4>
+        <p>EDA, dashboards, measurable outcomes.</p>
+      </article>
     </div>
   </section>
 
@@ -65,15 +95,15 @@
           I enjoy collaborating with cross-functional teams, shipping features, and improving usability and performance.
         </p>
         <div class="links">
-          <a class="chip" href="mailto:chetanak1005@gmail.com">Mail✉️↗</a>
-          <a class="chip" href="https://www.linkedin.com/in/chetana-kulkarni-23a2542b3/" target="_blank" rel="noopener">LinkedInℹ️↗</a>
-          <a class="chip" href="tel:+919322280063">Phone📞</a>
-          <a class="chip" href="#contact">Mumbai📍</a>
+          <a class="chip" href="mailto:chetanak1005@gmail.com">Mail ✉️ ↗</a>
+          <a class="chip" href="https://www.linkedin.com/in/chetana-kulkarni-23a2542b3/" target="_blank" rel="noopener">LinkedIn ℹ️ ↗</a>
+          <a class="chip" href="tel:+919322280063">Phone 📞</a>
+          <a class="chip" href="#contact">Mumbai 📍</a>
         </div>
       </div>
 
       <div class="about-card">
-        <!-- Circular portrait outside the card -->
+        <!-- Circular portrait floats outside the card -->
         <div class="about-portrait">
           <img src="assets/about-portrait.png" alt="Chetana illustration">
         </div>
@@ -91,19 +121,19 @@
     </div>
   </section>
 
-  <!-- Skills (section backdrop applied via CSS) -->
+  <!-- Skills (section backdrop via CSS) -->
   <section id="skills" class="section has-backdrop skills-backdrop">
     <div class="container">
       <h2>Technical Skills</h2>
       <div class="skills-grid">
-        <div class="card"><h4>Languages</h4><p>Python, C, JavaScript, PHP, XML, JSON</p></div>
-        <div class="card"><h4>Web / Dev</h4><p>HTML, CSS, React.js, Web APIs</p></div>
-        <div class="card"><h4>Databases</h4><p>PostgreSQL, MySQL, MongoDB, Firebase</p></div>
-        <div class="card"><h4>Platforms & Tools</h4><p>LaTeX, Android Studio, VSCode, Figma, Selenium, Google Analytics</p></div>
-        <div class="card"><h4>Data Engineering & Science</h4><p>MS Excel, Tableau, Power BI, Visualization, ETL, EDA, Data Pipelines</p></div>
-        <div class="card"><h4>Frameworks & Libs</h4><p>NumPy, Pandas, Scrapy, Matplotlib, TensorFlow, Playwright</p></div>
-        <div class="card"><h4>Cloud & DevOps</h4><p>AWS, Docker, Airflow, Git/GitHub, Jenkins</p></div>
-        <div class="card"><h4>Concepts</h4><p>OOP, Cloud Computing, Networks, System Design, DevOps, Software Testing</p></div>
+        <div class="card glass"><h4>Languages</h4><p>Python, C, JavaScript, PHP, XML, JSON</p></div>
+        <div class="card glass"><h4>Web / Dev</h4><p>HTML, CSS, React.js, Web APIs</p></div>
+        <div class="card glass"><h4>Databases</h4><p>PostgreSQL, MySQL, MongoDB, Firebase</p></div>
+        <div class="card glass"><h4>Platforms & Tools</h4><p>LaTeX, Android Studio, VSCode, Figma, Selenium, Google Analytics</p></div>
+        <div class="card glass"><h4>Data Engineering & Science</h4><p>MS Excel, Tableau, Power BI, Visualization, ETL, EDA, Data Pipelines</p></div>
+        <div class="card glass"><h4>Frameworks & Libs</h4><p>NumPy, Pandas, Scrapy, Matplotlib, TensorFlow, Playwright</p></div>
+        <div class="card glass"><h4>Cloud & DevOps</h4><p>AWS, Docker, Airflow, Git/GitHub, Jenkins</p></div>
+        <div class="card glass"><h4>Concepts</h4><p>OOP, Cloud Computing, Networks, System Design, DevOps, Software Testing</p></div>
       </div>
     </div>
   </section>
@@ -154,7 +184,7 @@
     <div class="container">
       <h2>Experience</h2>
       <div class="project-grid">
-        <article class="project card">
+        <article class="project card glass">
           <div class="project-meta"><span class="pill">Analytics</span><span class="pill">Operations</span></div>
           <h3>Digital Forensics Analyst — DeepCytes</h3>
           <p><em>Jan 2025 – Jun 2025</em></p>
@@ -165,7 +195,7 @@
           </ul>
         </article>
 
-        <article class="project card">
+        <article class="project card glass">
           <div class="project-meta"><span class="pill">Frontend</span><span class="pill">APIs</span></div>
           <h3>Tech Intern — ZecBay</h3>
           <p><em>Mar 2025 – May 2025</em></p>
@@ -176,7 +206,7 @@
           </ul>
         </article>
 
-        <article class="project card">
+        <article class="project card glass">
           <div class="project-meta"><span class="pill">Frontend</span><span class="pill">Accessibility</span></div>
           <h3>Frontend Intern — KJSSE</h3>
           <p><em>Jun 2024 – Aug 2024</em></p>
@@ -186,7 +216,7 @@
           </ul>
         </article>
 
-        <article class="project card">
+        <article class="project card glass">
           <div class="project-meta"><span class="pill">Legal Tech</span><span class="pill">Research</span></div>
           <h3>Cyber Law Analyst — DeepCytes</h3>
           <p><em>Jun 2024 – Dec 2024</em></p>
@@ -198,38 +228,38 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Projects (section backdrop via CSS) -->
   <section id="projects" class="section bg-alt has-backdrop projects-backdrop">
     <div class="container">
       <h2>Projects</h2>
 
       <div class="project-grid">
-        <article class="project card">
+        <article class="project card glass">
           <div class="project-meta"><span class="pill">Microsoft Excel: Data Cleaning</span><span class="pill">Visualization</span></div>
           <h3>IMDB Movie Analysis</h3>
           <p>Uncovered trends in genres, durations, languages, budgets, and directors that influence IMDB ratings and profitability in a dataset of 10K+ movies.</p>
         </article>
 
-        <article class="project card">
+        <article class="project card glass">
           <div class="project-meta"><span class="pill">Advance Microsoft Excel</span><span class="pill">Risk Analytics</span><span class="pill">EDA</span></div>
           <h3>Bank Loan Case Study</h3>
           <p>Performed EDA to evaluate loan approval patterns and identify risk factors tied to defaults using demographics, credit history, and loan features.</p>
         </article>
 
-        <article class="project card">
+        <article class="project card glass">
           <div class="project-meta"><span class="pill">Figma</span><span class="pill">Web</span></div>
           <h3>Elevate</h3>
           <p>Researched and designed an interface describing CE program paths and dependencies; improved information access by ~35%.</p>
         </article>
 
-        <article class="project card">
+        <article class="project card glass">
           <div class="project-meta"><span class="pill">Python</span><span class="pill">NLP</span><span class="pill">ML</span></div>
           <h3>Essify</h3>
           <p>Essay submission module with real-time AI feedback on grammar/structure, progress tracking, and plagiarism detection.</p>
         </article>
 
-        <article class="project card">
+        <article class="project card glass">
           <div class="project-meta"><span class="pill">Vite</span><span class="pill">React</span><span class="pill">Firebase</span></div>
           <h3>PlayVista</h3>
           <p>Sports networking platform enabling location-based searches, real-time scheduling, and ground availability tracking; improved user engagement by ~30%.</p>
@@ -238,7 +268,7 @@
     </div>
   </section>
 
-  <!-- Publications, Interests & Key Achievements (section backdrop via CSS) -->
+  <!-- Publications & Key Achievements (section backdrop via CSS) -->
   <section id="extras" class="section has-backdrop achievements-backdrop">
     <div class="container">
       <h2>Publications & Others</h2>
@@ -262,12 +292,8 @@
 
       <h3 class="mt">Positions & Responsibilities</h3>
       <ul>
-        <li><strong>KJSSE Placement Coordinator (Current):</strong>Coordinate and support placement/internship drives (on-campus/online), acting as the primary contact for students and assisting with policy/process guidance, eligibility tracking, and inter-branch coordination.
-          Serve as a resource person during drives, liaising between students, the college, and industry, and handling additional duties as assigned by the TPO/Internship Cell.
-</li>
-        <li><strong>KJSSE Insignia — ART Team:</strong>Designed and led creative installations for college fests. 
-          Promoted team collaboration and enhanced event aesthetics.
-</li>
+        <li><strong>KJSSE Placement Coordinator (Current):</strong>Coordinate and support placement/internship drives (on-campus/online), acting as the primary contact for students and assisting with policy/process guidance, eligibility tracking, and inter-branch coordination. Serve as a resource person during drives, liaising between students, the college, and industry, and handling additional duties as assigned by the TPO/Internship Cell.</li>
+        <li><strong>KJSSE Insignia — ART Team:</strong>Designed and led creative installations for college fests. Promoted team collaboration and enhanced event aesthetics.</li>
       </ul>
 
       <h3 class="mt">Key Achievements</h3>
